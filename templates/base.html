@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="{% static "main/css/bootstrap.css" %}" media="screen" title="bootstrap css" charset="utf-8">
   </head>
   <body>
+
     <div class="container">
+      {{ request.user }}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'logout' %}?next=/">Logout</a>
       {% block content %}
         No content provided
       {% endblock %}
