@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
-from main.models import Chirp
+from main.models import Chirp, StopWord
 
 class IndexView(ListView):
     template_name = "index.html"
@@ -25,6 +25,12 @@ class ChirpCreateView(CreateView):
     success_url = "/"
 
     def form_valid(self, form):
+        stop_words = StopWord.objects.all()
+        chirp_body = form.cleaned_data["body"].lower()
+        for stop_word in stop_words:
+            if stop_word.word in chirp_body:
+                form.add_error("body", "YOU IS A POTTY MOUTH!!!")
+                return self.form_invalid(form)
         chirp = form.save(commit=False)
         chirp.bird = self.request.user
         return super().form_valid(form)
