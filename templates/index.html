@@ -10,6 +10,10 @@
       </div>
       <div class="panel-body">
         {{ chirps.body }}
+        {% if chirps.bird == request.user %}
+          <br>
+          <a href="{% url 'chirp_detail_view' chirps.pk %}">Click Here for Details</a>
+        {% endif %}
       </div>
     </div>
   {% endfor %}
