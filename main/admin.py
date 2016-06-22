@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import Chirp, StopWord
+from main.models import Chirp, StopWord, Profile
 
 class ChirpAdmin(admin.ModelAdmin):
     list_display = ["body", "bird", "created"]
@@ -14,3 +14,5 @@ class StopAdmin(admin.ModelAdmin):
     search_fields = ['word']
 
 admin.site.register(StopWord, StopAdmin)
+
+admin.site.register(Profile)
