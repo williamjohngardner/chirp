@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form class="" action="" method="post">
+  {% csrf_token %}
+  <p>
+    Are you sure you want to delete "{{ object }}"?
+  </p>
+  <input class="btn btn-danger btn-xs" type="submit" name="name" value="confirm">
+</form>
+
+{% endblock %}
