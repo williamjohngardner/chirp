@@ -3,9 +3,15 @@
 {% block content %}
   <div class="container">
     <h1>Your Profile</h1>
-    <form  action="" method="post">
+
+    <h4><img src="{{object.photo_url}}" alt="" /></h4>
+
+
+
+    <form  action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
+      <div class="">
+        {{ form.as_p }}
       <input class="btn btn-primary" type="submit" name="submit_button" value="Update Profile">
     </form>
   </div>

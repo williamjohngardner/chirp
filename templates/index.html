@@ -8,7 +8,10 @@
     {% for chirps in object_list %}
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">{{ chirps.bird }}</h3>
+          <h3 class="panel-title">
+            <img class="thumb" src="{{chirps.bird.profile.photo_url}}" alt="" />
+            {{ chirps.bird }}
+          </h3>
         </div>
         <div class="panel-body">
           {{ chirps.body }}
@@ -16,6 +19,10 @@
             <br>
             <a href="{% url 'chirp_detail_view' chirps.pk %}">Click Here for Details</a>
             <br>
+            <form class="" action="{% url 'chirp_delete_view' chirps.pk %}" method="post">
+                {% csrf_token %}
+                <input type="submit" name="delete_button" value="Delete Chrip Now!">
+            </form>
             <a class="btn btn-danger btn-xs" href="{% url 'chirp_delete_view' chirps.pk %}">Delete Chirp</a>
           {% endif %}
         </div>
@@ -26,12 +33,12 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ "Chirp Somethin'" }}</h3>
+        <h3 class="panel-title">Chirp Somethin'</h3>
       </div>
         <div class="panel-body">
           <form class="" action="" method="post">
             {% csrf_token %}
-            {{form.as_p}}
+              {{form.as_p}}
             <input class="btn" type="submit" name="name" value="Chirp!">
           </form>
         </div>

@@ -37,7 +37,7 @@ class ChirpDetailView(DetailView):
 
 class ProfileUpdateView(UpdateView):
 
-    fields = ["favorite_bird"]
+    fields = ["favorite_bird", "photo"]
     success_url = reverse_lazy("profile_update_view")
 
 # this will override the need for a pk or a slug from the Url and lets us delete get_queryset
